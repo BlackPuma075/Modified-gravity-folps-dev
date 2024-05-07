@@ -57,7 +57,7 @@ def new_data(
         final1 = np.vstack((h2, h4))
         final = np.vstack((final1, h6))
         new_covariance = final
-    num_k = [min_k, max_k, (max_k - min_k) / (len(p) / n_poles)]
+    num_k = [pk_data[:,0:1][n], pk_data[:,0:1][m], (pk_data[:,0:1][m]- pk_data[:,0:1][n]) / (len(p) / n_poles)]
     print(
         "Las dimensiones de la matriz de covarianza son: ", new_covariance.shape
     )  # Creamos una matriz de covarianza nueva, eliminando los datos que exceden los límites de k
