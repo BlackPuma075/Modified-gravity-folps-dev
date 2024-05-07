@@ -1,9 +1,8 @@
-import numpy as np
-
-
 def new_data(
     min_k, max_k, pk_data, covariance_data, n_poles
 ):  # Función para establecer las dimensiones de los datos en función de los límites de k
+    import numpy as np
+
     for i in range(len(pk_data[:, 0:1])):
         if pk_data[:, 0:1][i] == min_k:
             n = i
