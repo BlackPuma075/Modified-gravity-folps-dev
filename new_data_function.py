@@ -2,12 +2,17 @@ def new_data(
     min_k, max_k, pk_data, covariance_data, n_poles
 ):  # Función para establecer las dimensiones de los datos en función de los límites de k
     import numpy as np
-    #hola buberto
-    for i in range(len(pk_data[:, 0:1])):
-        if pk_data[:, 0:1][i] == min_k:
+
+    n = 0
+    m = len(pk_data)-1
+    for i in range(len(pk_data[:,0:1])):
+        if pk_data[:,0:1][i]>min_k:
             n = i
-        if pk_data[:, 0:1][i] == max_k:
+            break
+    for i in range(len(pk_data[:,0:1])):        
+        if pk_data[:,0:1][i]>max_k or i ==len(pk_data)-1:
             m = i
+            break
     s = int(len(covariance_data[0]) / n_poles)
     p_subfile = pk_data[:, 1:2][n : m + 1]
     if n_poles == 2:
@@ -56,4 +61,4 @@ def new_data(
     print(
         "Las dimensiones de la matriz de covarianza son: ", new_covariance.shape
     )  # Creamos una matriz de covarianza nueva, eliminando los datos que exceden los límites de k
-    return p, new_covariance, np.array(num_k)
+    return p, new_covariance, num_k
