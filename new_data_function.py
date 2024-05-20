@@ -7,11 +7,11 @@ def new_data(
     m = len(pk_data)-1
     for i in range(len(pk_data[:,0:1])):
         if pk_data[:,0:1][i]>min_k:
-            n = i
+            n = i-1
             break
     for i in range(len(pk_data[:,0:1])):        
         if pk_data[:,0:1][i]>max_k or i ==len(pk_data)-1:
-            m = i
+            m = i-1
             break
     s = int(len(covariance_data[0]) / n_poles)
     p_subfile = pk_data[:, 1:2][n : m + 1]
