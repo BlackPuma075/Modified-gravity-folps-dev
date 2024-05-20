@@ -12,7 +12,7 @@ def new_data(
             break
     for i in range(len(pk_data[:,0:1])):        
         if pk_data[:,0:1][i]>max_k or i ==len(pk_data)-1:
-            m = i-2
+            m = i-1
             print('m = ',m)
             break
     s = int(len(covariance_data[0]) / n_poles)
