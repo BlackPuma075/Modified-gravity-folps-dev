@@ -7,7 +7,7 @@ def new_data(
     m = len(pk_data)-1
     for i in range(len(pk_data[:,0:1])):
         if pk_data[:,0:1][i]>min_k:
-            n = i-1
+            n = i
             break
     for i in range(len(pk_data[:,0:1])):        
         if pk_data[:,0:1][i]>max_k or i ==len(pk_data)-1:
