@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 # In[5]:
 
 
-from desilike.theories.galaxy_clustering import FOLPSAXTracerPowerSpectrumMultipoles, DirectPowerSpectrumTemplate, FixedPowerSpectrumTemplate
+from desilike.theories.galaxy_clustering import FOLPSAXTracerPowerSpectrumMultipoles, DirectPowerSpectrumTemplate
 
 template = DirectPowerSpectrumTemplate( fiducial = 'DESI', z = 0.5)
 theory = FOLPSAXTracerPowerSpectrumMultipoles(template = template, prior_basis = 'physical')
@@ -81,8 +81,11 @@ likelihood = ObservablesGaussianLikelihood(observables = [observable])
 
 
 template2 = DirectPowerSpectrumTemplate( fiducial = 'DESI')
-theory2 = FOLPSAXTracerPowerSpectrumMultipoles(template = template,tracer = 'LRG', prior_basis = 'physical')
+theory2 = FOLPSAXTracerPowerSpectrumMultipoles(template = template2,tracer = 'LRG', prior_basis = 'physical')
 
+template2.params['n_s'].update(fixed = False)
+template2.params['n_s'].update(prior={'dist':'norm','loc':0.9649, 'scale':0.048}) #Planck width x10
+theory2.params['b3p'].update(fixed = False)
 
 # In[13]:
 
@@ -96,7 +99,7 @@ covariance_fn_2 = '/global/cfs/cdirs/desi/survey/catalogs/Y1/LSS/iron/LSScats/v1
 
 
 covariance_2 = ObservableCovariance.load(covariance_fn_2)
-covariance_2 = covariance.select(xlim = (0.02, 0.2), projs = [0,2])
+covariance_2 = covariance_2.select(xlim = (0.02, 0.2), projs = [0,2])
 
 
 # In[15]:
@@ -153,7 +156,7 @@ Likelihood()
 
 from desilike.samplers import EmceeSampler
 
-sampler = EmceeSampler(Likelihood,seed = 42,save_fn = 'Chains/LRG_N_plus_S_script')
+sampler = EmceeSampler(Likelihood,seed = 42,save_fn = 'Chains/LRG_N_plus_S_script_corrected')
 sampler.run(check={'max_eigen_gr': 0.05})
 
 
@@ -162,7 +165,7 @@ sampler.run(check={'max_eigen_gr': 0.05})
 
 from desilike.samples import Chain, plotting
 
-chain = Chain.load('Chains/LRG_N_plus_S_script.npy').remove_burnin(0.3)
+chain = Chain.load('Chains/LRG_N_plus_S_script_corrected.npy').remove_burnin(0.3)
 
 
 # In[ ]:
