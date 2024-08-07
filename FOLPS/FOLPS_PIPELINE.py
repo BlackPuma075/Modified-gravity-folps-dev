@@ -23,7 +23,7 @@ from desilike.samplers import EmceeSampler
 #List of tracers
 tracers = ['LRG1_SGC', 'LRG1_NGC'] #Add tracers as needed
 prior = 'physical' #Specify the prior
-chain_name = 'Chains/LRG1_NGC_SGC_ell02_kmax0.2_sigm8_Omega_m_v3' #fn to save the chain
+chain_name = 'Chains/LRG1_NGC_SGC_ell02_kmax0.2' #fn to save the chain
 
 #File paths for each tracer (same order as tracers list)
 tracer_params = {
