@@ -94,7 +94,7 @@ for tracer in tracers:
         print(f'Invalid tracer: {tracer}')
         continue
     #Create the template and theory
-    template = DirectPowerSpectrumTemplate(cosmo = cosmo, z=z)
+    template = DirectPowerSpectrumTemplate(fiducial = 'DESI', z=z)
     theory = FOLPSAXTracerPowerSpectrumMultipoles(template=template, prior_basis=prior)
     
     #Updating free parameters
