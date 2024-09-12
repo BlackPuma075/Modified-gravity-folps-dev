@@ -773,7 +773,7 @@ def cmM(k_min, k_max, N, b_nu, inputpkT):
 
 
 
-def NonLinear(inputpkl, CosmoParams, kminout=0.001, kmaxout=0.5, nk = 120, EdSkernels = False, fR0=None):
+def NonLinear(inputpkl, CosmoParams, kminout=0.001, kmaxout=0.5, nk = 120, EdSkernels = False, fR0=CosmoParams[-1]):
     '''1-loop corrections to the linear power spectrum.
     
     Args:
