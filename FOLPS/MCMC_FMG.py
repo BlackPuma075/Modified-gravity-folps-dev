@@ -365,29 +365,29 @@ with MPIPool() as pool:
     if not pool.is_master():
         pool.wait()
         sys.exit(0)
-backend = emcee.backends.HDFBackend(fn)
-        
-sampler = emcee.EnsembleSampler(nwalkers, ndim, log_probability,pool = pool, backend=backend)
-    # Now we'll sample for up to max_n steps
-for sample in sampler.sample(start, iterations=max_n, progress=True):
-    # Only check convergence every 100 steps
-    if sampler.iteration % 100:
-        continue
+    backend = emcee.backends.HDFBackend(fn)
             
+    sampler = emcee.EnsembleSampler(nwalkers, ndim, log_probability,pool = pool, backend=backend)
+        # Now we'll sample for up to max_n steps
+    for sample in sampler.sample(start, iterations=max_n, progress=True):
+        # Only check convergence every 100 steps
+        if sampler.iteration % 100:
+            continue
+                
+                
+            # Compute the autocorrelation time so far
+            # Using tol=0 means that we'll always get an estimate even
+            # if it isn't trustworthy
+        tau = sampler.get_autocorr_time(tol=0)
+        autocorr[index] = np.mean(tau)
+        index += 1
             
-        # Compute the autocorrelation time so far
-        # Using tol=0 means that we'll always get an estimate even
-        # if it isn't trustworthy
-    tau = sampler.get_autocorr_time(tol=0)
-    autocorr[index] = np.mean(tau)
-    index += 1
-        
-        # Check convergence
-    converged = np.all(tau * 100 < sampler.iteration)
-    converged &= np.all(np.abs(old_tau - tau) / tau < 0.01)
-    if converged:
-        break
-    old_tau = tau
+            # Check convergence
+        converged = np.all(tau * 100 < sampler.iteration)
+        converged &= np.all(np.abs(old_tau - tau) / tau < 0.01)
+        if converged:
+            break
+        old_tau = tau
 
 
 # In[ ]:
