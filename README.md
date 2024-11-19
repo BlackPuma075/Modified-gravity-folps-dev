@@ -17,3 +17,4 @@ And installing the modified desilike and cosmoprimo packages using:
 python -m pip install git+https://github.com/cosmodesi/cosmoprimo@dgbranch
 python -m pip install git+https://github.com/cosmodesi/desilike@dbranch
 ```
+It is also important to download the FMG.py file and have it in the same folder where you are running the FMG scripts (Yet to be fixed).
