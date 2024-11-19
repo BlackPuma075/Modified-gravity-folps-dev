@@ -47,5 +47,7 @@ To run the Modified Gravity FOLPS (FMG) scripts:
 
 ## **Future improvements**
 -Automating the installation of FMG.py to eliminate manual steps.
+
 -Adding more detailed examples and pre-configured tests.
+
 -Improving compatibility with other cosmological tools.
