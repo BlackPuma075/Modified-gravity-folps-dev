@@ -1,4 +1,4 @@
-name: #Add name
+name: fmg_env #Edit the name of the environment if you want!
 channels:
   - anaconda
   - conda-forge
