@@ -22,7 +22,7 @@ To use the **FOLPS** scripts, you need to download the official **DESILike** and
 ## **Installation Instructions**
 
 ### 1. **Set up the environment**
-To create the required environment, follow these steps. By default, the environment will be named `fmg_env`, but you can rename it if needed.
+To use the **FMG** scripts create the required environment, following these steps. By default, the environment will be named `fmg_env`, but you can rename it if needed.
 
 ```bash
 conda env export > environment.yml
