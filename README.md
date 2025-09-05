@@ -32,7 +32,7 @@ conda env create -f environment.yml
 Run the following commands to install the modified branches of DESILike and CosmoPrimo:
 ```bash
 python -m pip install git+https://github.com/cosmodesi/cosmoprimo@dgbranch
-python -m pip install git+https://github.com/cosmodesi/desilike@dbranch
+python -m pip install git+https://github.com/cosmodesi/desilike@dbranch#egg=desilike[plotting,jax]
 ```
 ---
 
